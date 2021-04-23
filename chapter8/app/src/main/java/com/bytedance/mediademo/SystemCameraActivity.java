@@ -94,8 +94,7 @@ public class SystemCameraActivity extends AppCompatActivity {
     }
 
     private void takePhotoHasPermission() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_CODE_TAKE_PHOTO);
+        // todo
     }
 
     @Override
@@ -127,27 +126,9 @@ public class SystemCameraActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_TAKE_PHOTO && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap bitmap = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(bitmap);
+            // todo
         } else if (requestCode == REQUEST_CODE_TAKE_PHOTO_PATH && resultCode == RESULT_OK) {
-            //获取ImageView控件宽高
-            int targetWidth = imageView.getWidth();
-            int targetHeight = imageView.getHeight();
-            //创建Options,设置inJustDecodeBounds为true，只解码图片宽高信息
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inJustDecodeBounds = true;
-            BitmapFactory.decodeFile(takeImagePath, options);
-            int photoWidth = options.outWidth;
-            int photoHeight = options.outHeight;
-            //计算图片和控件的缩放比例，并设置给Options,然后inJustDecodeBounds置为false，解码真正的图片信息
-            int scaleFactor = Math.min(photoWidth / targetWidth, photoHeight / targetHeight);
-            options.inJustDecodeBounds = false;
-            options.inSampleSize = scaleFactor;
-
-            Bitmap bitmap = BitmapFactory.decodeFile(takeImagePath, options);
-            Bitmap rotateBitmap = PathUtils.rotateImage(bitmap,takeImagePath);
-            imageView.setImageBitmap(rotateBitmap);
+            // todo
         }
     }
 
